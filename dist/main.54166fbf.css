@@ -1,0 +1,492 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #767aea;
+  color: #fff;
+  font-family: "Marcellus SC", serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+p {
+  margin: 0 0 8px 0;
+}
+
+ul {
+  margin: 15px 0;
+  padding-left: 15px;
+}
+ul li {
+  line-height: 1.8;
+  margin: 0 0 10px 0;
+}
+
+a {
+  color: #fff;
+}
+a:hover, a:focus {
+  color: #222348;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 80px 15px 15px;
+  width: 1024px;
+}
+.container .header {
+  display: block;
+  margin: 0 0 80px 0;
+  width: 100%;
+}
+.container .header .title {
+  margin: 0 0 15px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.container .header p {
+  font-size: 22px;
+  line-height: 1.8;
+  text-align: center;
+}
+.container .header .btns {
+  display: block;
+  margin: 30px 0 0;
+  text-align: center;
+}
+.container .header .btns .btn {
+  margin-bottom: 15px;
+}
+.container .section {
+  margin: 0 -15px;
+}
+.container .section::after, .container .section::before {
+  clear: both;
+  content: "";
+  display: table;
+}
+.container .section .left-section,
+.container .section .right-section {
+  float: left;
+  margin-bottom: 50px;
+  padding: 0 15px;
+  width: 50%;
+}
+@media only screen and (max-width: 992px) {
+  .container .section .left-section,
+.container .section .right-section {
+    float: none;
+    width: 100%;
+  }
+}
+.container .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+.container .btn {
+  align-items: center;
+  background: #fff;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+  color: #767aea;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  height: 40px;
+  justify-content: center;
+  letter-spacing: 3px;
+  line-height: 1;
+  margin: 0;
+  max-width: 100%;
+  min-width: 200px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 30px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  width: auto;
+}
+.container .btn.alt, .container .btn.player-btn {
+  background: #5457af;
+  color: #fff;
+}
+.container .btn.player-btn {
+  min-width: 49%;
+  padding: 0 10px;
+}
+.container .btn:active {
+  top: -2px;
+}
+.container .game {
+  border: 2px dashed #5457af;
+  display: block;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 100%;
+  min-height: 400px;
+  padding: 15px;
+  position: relative;
+  width: 400px;
+}
+.container .game > .wrapper {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+.container .game .player-rb {
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  left: 0;
+  margin: 0;
+  min-width: 49%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.container .game .player-rb#player-b-rb {
+  left: 51%;
+}
+.container .game .player-rb:active + .player-btn {
+  top: -2px;
+}
+.container .game .player-rb:checked + .player-btn {
+  background: #fff;
+  color: #767aea;
+}
+.container .game .player-rb:checked ~ .game-box {
+  opacity: 1;
+}
+.container .game .player-rb:checked#player-a-rb ~ .game-box .cbb {
+  visibility: hidden;
+}
+.container .game .player-rb:checked#player-a-rb ~ .turn-b {
+  display: none;
+}
+.container .game .player-rb:checked#player-b-rb ~ .game-box .cba {
+  visibility: hidden;
+}
+.container .game .player-rb:checked#player-b-rb ~ .turn-a {
+  display: none;
+}
+.container .game .turn {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+  width: 100%;
+}
+.container .game-box {
+  clear: both;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 30px auto;
+  position: relative;
+  width: 270px;
+}
+.container .game-box .cb {
+  cursor: pointer;
+  display: none;
+  height: 80px;
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 80px;
+  z-index: 10;
+}
+.container .game-box .cube {
+  align-items: center;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  height: 80px;
+  justify-content: center;
+  margin: 5px;
+  position: relative;
+  width: 80px;
+}
+.container .game-box .cube::after {
+  align-items: center;
+  color: #000;
+  display: flex;
+  font-size: 40px;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  line-height: 40px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.container .game-box .cb:checked {
+  z-index: -1;
+}
+.container .game-box #cba-1:checked ~ #cube-1::after {
+  content: "✓";
+}
+.container .game-box #cbb-1:checked ~ #cube-1::after {
+  content: "✗";
+}
+.container .game-box .cb:checked {
+  z-index: -1;
+}
+.container .game-box #cba-2:checked ~ #cube-2::after {
+  content: "✓";
+}
+.container .game-box #cbb-2:checked ~ #cube-2::after {
+  content: "✗";
+}
+.container .game-box .cb:checked {
+  z-index: -1;
+}
+.container .game-box #cba-3:checked ~ #cube-3::after {
+  content: "✓";
+}
+.container .game-box #cbb-3:checked ~ #cube-3::after {
+  content: "✗";
+}
+.container .game-box .cb:checked {
+  z-index: -1;
+}
+.container .game-box #cba-4:checked ~ #cube-4::after {
+  content: "✓";
+}
+.container .game-box #cbb-4:checked ~ #cube-4::after {
+  content: "✗";
+}
+.container .game-box .cb:checked {
+  z-index: -1;
+}
+.container .game-box #cba-5:checked ~ #cube-5::after {
+  content: "✓";
+}
+.container .game-box #cbb-5:checked ~ #cube-5::after {
+  content: "✗";
+}
+.container .game-box .cb:checked {
+  z-index: -1;
+}
+.container .game-box #cba-6:checked ~ #cube-6::after {
+  content: "✓";
+}
+.container .game-box #cbb-6:checked ~ #cube-6::after {
+  content: "✗";
+}
+.container .game-box .cb:checked {
+  z-index: -1;
+}
+.container .game-box #cba-7:checked ~ #cube-7::after {
+  content: "✓";
+}
+.container .game-box #cbb-7:checked ~ #cube-7::after {
+  content: "✗";
+}
+.container .game-box .cb:checked {
+  z-index: -1;
+}
+.container .game-box #cba-8:checked ~ #cube-8::after {
+  content: "✓";
+}
+.container .game-box #cbb-8:checked ~ #cube-8::after {
+  content: "✗";
+}
+.container .game-box .cb:checked {
+  z-index: -1;
+}
+.container .game-box #cba-9:checked ~ #cube-9::after {
+  content: "✓";
+}
+.container .game-box #cbb-9:checked ~ #cube-9::after {
+  content: "✗";
+}
+.container .game-box #cba-1,
+.container .game-box #cbb-1 {
+  display: block;
+  left: 5px;
+  top: 5px;
+}
+.container .game-box #cba-4,
+.container .game-box #cbb-4 {
+  display: block;
+  left: 5px;
+  top: 95px;
+}
+.container .game-box #cba-7,
+.container .game-box #cbb-7 {
+  display: block;
+  left: 5px;
+  top: 185px;
+}
+.container .game-box #cba-2,
+.container .game-box #cbb-2 {
+  display: block;
+  left: 95px;
+  top: 5px;
+}
+.container .game-box #cba-5,
+.container .game-box #cbb-5 {
+  display: block;
+  left: 95px;
+  top: 95px;
+}
+.container .game-box #cba-8,
+.container .game-box #cbb-8 {
+  display: block;
+  left: 95px;
+  top: 185px;
+}
+.container .game-box #cba-3,
+.container .game-box #cbb-3 {
+  display: block;
+  left: 185px;
+  top: 5px;
+}
+.container .game-box #cba-6,
+.container .game-box #cbb-6 {
+  display: block;
+  left: 185px;
+  top: 95px;
+}
+.container .game-box #cba-9,
+.container .game-box #cbb-9 {
+  display: block;
+  left: 185px;
+  top: 185px;
+}
+.container .game-box .overlay {
+  align-items: center;
+  background: #fff;
+  border-radius: 4px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: -1;
+}
+.container .game-box .overlay h3,
+.container .game-box .overlay h4 {
+  text-transform: uppercase;
+}
+.container .reset-game {
+  display: block;
+  margin: 0;
+  text-align: center;
+}
+.container .reset-game .btn {
+  width: 100%;
+}
+.container #cba-1:checked ~ #cba-2:checked ~ #cba-3:checked ~ .overlay-a {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cba-4:checked ~ #cba-5:checked ~ #cba-6:checked ~ .overlay-a {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cba-7:checked ~ #cba-8:checked ~ #cba-9:checked ~ .overlay-a {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cba-1:checked ~ #cba-4:checked ~ #cba-7:checked ~ .overlay-a {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cba-2:checked ~ #cba-5:checked ~ #cba-8:checked ~ .overlay-a {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cba-3:checked ~ #cba-6:checked ~ #cba-9:checked ~ .overlay-a {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cba-1:checked ~ #cba-5:checked ~ #cba-9:checked ~ .overlay-a {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cba-3:checked ~ #cba-5:checked ~ #cba-7:checked ~ .overlay-a {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cbb-1:checked ~ #cbb-2:checked ~ #cbb-3:checked ~ .overlay-b {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cbb-4:checked ~ #cbb-5:checked ~ #cbb-6:checked ~ .overlay-b {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cbb-7:checked ~ #cbb-8:checked ~ #cbb-9:checked ~ .overlay-b {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cbb-1:checked ~ #cbb-4:checked ~ #cbb-7:checked ~ .overlay-b {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cbb-2:checked ~ #cbb-5:checked ~ #cbb-8:checked ~ .overlay-b {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cbb-3:checked ~ #cbb-6:checked ~ #cbb-9:checked ~ .overlay-b {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cbb-1:checked ~ #cbb-5:checked ~ #cbb-9:checked ~ .overlay-b {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+.container #cbb-3:checked ~ #cbb-5:checked ~ #cbb-7:checked ~ .overlay-b {
+  opacity: 1;
+  visibility: visible;
+  z-index: 98;
+}
+
+/*# sourceMappingURL=/main.54166fbf.css.map */
