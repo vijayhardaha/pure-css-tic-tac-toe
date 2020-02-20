@@ -2,6 +2,8 @@
 
 A Tic-Tac-Toe game purely built on HTML & CSS. A Fun & Cool project to inspire some new developers so that they can learn new things and challenge themselves to build some complex things.
 
+Demo is available here [https://pure-css-tic-tac-toe.netlify.com](https://pure-css-tic-tac-toe.netlify.com)
+
 ## Contact Me
 
 - [Peopleperhour](https://pph.me/vijayhardaha)
